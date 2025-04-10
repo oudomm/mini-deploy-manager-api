@@ -1,5 +1,5 @@
 # Use OpenJDK with Gradle pre-installed
-FROM gradle:8.4-jdk17 AS build
+FROM gradle:8.4-jdk21 AS build
 
 # Copy source code
 COPY --chown=gradle:gradle . /home/gradle/project
@@ -11,7 +11,7 @@ RUN gradle build --no-daemon
 # ---------------------------
 # Runtime image
 # ---------------------------
-FROM openjdk:17-jdk-slim
+FROM openjdk:21-jdk-slim
 
 WORKDIR /app
 
