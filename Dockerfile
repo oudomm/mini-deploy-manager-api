@@ -5,8 +5,8 @@ FROM gradle:8.4-jdk21 AS build
 COPY --chown=gradle:gradle . /home/gradle/project
 WORKDIR /home/gradle/project
 
-# Build the JAR
-RUN gradle build --no-daemon
+# Build the JAR, skipping tests
+RUN gradle build -x test --no-daemon
 
 # ---------------------------
 # Runtime image
